@@ -2,6 +2,7 @@ package view;
 
 import model.Element;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Interface {
 
@@ -14,7 +15,9 @@ public class Interface {
 	
 	public void drawElement(Element element) {
 		app.background(0);
-		//app.element.getURL
+		PImage elementos = null;
+		elementos = app.loadImage(element.getUrl());
+		app.image(elementos, 0, 0);
 	}
 	
 }

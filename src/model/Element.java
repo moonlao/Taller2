@@ -2,19 +2,33 @@ package model;
 
 public class Element {
 	
+	public int getPosX2() {
+		return posX2;
+	}
+	public void setPosX2(int posX2) {
+		this.posX2 = posX2;
+	}
+	public int getPosY2() {
+		return posY2;
+	}
+	public void setPosY2(int posY2) {
+		this.posY2 = posY2;
+	}
 	String palabra;
 	boolean interaccion;
 	int tipo;
-	static final int TIPO_1 = 1;
-	static final int TIPO_2 = 2;
-	static final int TIPO_3 = 3;
-	static final int TIPO_4 = 4;
-	static final int TIPO_5 = 5;
+	public static final int TIPO_1 = 1;
+	public static final int TIPO_2 = 2;
+	public static final int TIPO_3 = 3;
+	public static final int TIPO_4 = 4;
+	public static final int TIPO_5 = 5;
 	int posX;
 	int posY;
+	int posX2;
+	int posY2;
 	String url;
 	
-	public Element(String palabra, String url,boolean interaccion, int tipo, int posX, int posY) {
+	public Element(String palabra, String url,boolean interaccion, int tipo, int posX, int posY, int posX2, int posY2) {
 		super();
 		this.palabra = palabra;
 		this.url = url;
@@ -22,6 +36,8 @@ public class Element {
 		this.tipo = tipo;
 		this.posX = posX;
 		this.posY = posY;
+		this.posX2 = posX2;
+		this.posY2 = posY2;
 	}
 	public String getPalabra() {
 		return palabra;
