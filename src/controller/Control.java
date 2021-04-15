@@ -14,7 +14,11 @@ public class Control extends PApplet {
 
 	boolean ready4;
 	boolean ready7;
-	
+	boolean ready12;
+	boolean ready13;
+	boolean ready14;
+	boolean ready17;
+
 	public static void main(String[] args) {
 		PApplet.main(Control.class.getName());
 	}
@@ -40,9 +44,9 @@ public class Control extends PApplet {
 	PImage P10;
 	PImage P11;
 	PImage P12;
-	//PImage P6;
-	//PImage P6;
-	//PImage P6;
+	PImage P13;
+	// PImage P6;
+	// PImage P6;
 
 	int parallax;
 	boolean move;
@@ -116,8 +120,8 @@ public class Control extends PApplet {
 		P12 = null;
 		P12 = loadImage("./data/P12.png");
 
-		//P7 = null;
-		//P7 = loadImage("./data/P7.png");
+		P13 = null;
+		P13 = loadImage("./data/P13.png");
 
 		overScreen = null;
 		overScreen = loadImage("./data/overScreen.png");
@@ -172,7 +176,7 @@ public class Control extends PApplet {
 			if (mouseX > 800) {
 
 				if (parallax >= -35) {
-					//parallax = parallax - 2;
+					// parallax = parallax - 2;
 					parallax = parallax - 20;
 
 				} else {
@@ -181,15 +185,12 @@ public class Control extends PApplet {
 
 			}
 
-			
 			break;
 
 		case 3:
 
 			// TEXTO P1
 			image(P1, 0, 0, 1000, 1000);
-
-		
 
 			break;
 
@@ -198,8 +199,7 @@ public class Control extends PApplet {
 			// P2
 			image(P2, 0, 0, 1000, 1000);
 			System.out.println("se dibuja");
-             ready4=true;
-		
+			ready4 = true;
 
 			break;
 
@@ -215,8 +215,6 @@ public class Control extends PApplet {
 				}
 			}
 
-			
-
 			break;
 
 		case 6:
@@ -224,8 +222,6 @@ public class Control extends PApplet {
 			// P3
 
 			image(P3, 0, 0, 1000, 1000);
-			
-		
 
 			break;
 
@@ -234,8 +230,7 @@ public class Control extends PApplet {
 			// P4
 
 			image(P4, 0, 0, 1000, 1000);
-			ready7=true;
-			
+			ready7 = true;
 
 			break;
 
@@ -259,8 +254,6 @@ public class Control extends PApplet {
 
 			image(P5, 0, 0, 1000, 1000);
 
-		
-
 			break;
 
 		case 10:
@@ -278,19 +271,21 @@ public class Control extends PApplet {
 			break;
 
 		case 11:
-			//funciona bien
-			// P6 
+			// funciona bien
+			// P6
 
 			image(P6, 0, 0, 1000, 1000);
-			
+
 			break;
 
 		case 12:
-			
-			//no aparece ********************************************************************************************
+
+			// no aparece
+			// ********************************************************************************************
 			// P7
 
 			image(P7, 0, 0, 1000, 1000);
+			ready12 = true;
 
 			break;
 
@@ -299,6 +294,7 @@ public class Control extends PApplet {
 			// P8
 
 			image(P8, 0, 0, 1000, 1000);
+			ready13 = true;
 
 			break;
 
@@ -307,6 +303,7 @@ public class Control extends PApplet {
 			// P9
 
 			image(P9, 0, 0, 1000, 1000);
+			ready14 = true;
 
 			break;
 
@@ -337,6 +334,7 @@ public class Control extends PApplet {
 			// P11
 
 			image(P11, 0, 0, 1000, 1000);
+			ready17 = true;
 
 			break;
 
@@ -345,7 +343,15 @@ public class Control extends PApplet {
 			// P12
 
 			image(P12, 0, 0, 1000, 1000);
+
+			break;
 			
+		case 19:
+
+			// P13
+
+			image(P13, 0, 0, 1000, 1000);
+
 			break;
 
 		}
@@ -368,13 +374,13 @@ public class Control extends PApplet {
 		// CUENTO - P1 A P2 - mouses area de la flecha
 		if (screen == 3 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 4;
-			
-			System.out.println("screen 4"+ screen);
-			
+
+			System.out.println("screen 4" + screen);
+
 		}
 
 		// CUENTO - P2 a ELEMENTO1 - mouses area de la flecha
-		if (ready4 &&screen == 4 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+		if (ready4 && screen == 4 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 5;
 		}
 
@@ -457,15 +463,15 @@ public class Control extends PApplet {
 			screen = 12;
 		}
 
-		if (screen == 12 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+		if (ready12 && screen == 12 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 13;
 		}
 
-		if (screen == 13 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+		if (ready13 && screen == 13 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 14;
 		}
 
-		if (screen == 14 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+		if (ready14 && screen == 14 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 15;
 		}
 
@@ -487,15 +493,19 @@ public class Control extends PApplet {
 			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
 				screen = 16;
 			}
-			
-			if (screen == 16 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
-				screen = 17;
-			}
-			
-			if (screen == 17 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
-				screen = 18;
-			}
 
+		}
+
+		if (screen == 16 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 17;
+		}
+
+		if (ready17 && screen == 17 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 18;
+		}
+		
+		if (screen == 18 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 19;
 		}
 	}
 
