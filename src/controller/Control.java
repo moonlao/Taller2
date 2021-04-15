@@ -18,6 +18,15 @@ public class Control extends PApplet {
 	boolean ready13;
 	boolean ready14;
 	boolean ready17;
+	boolean ready18;
+	boolean ready19;
+	boolean ready22;
+	boolean ready23;
+	boolean ready24;
+	boolean ready25;
+	boolean ready26;
+	boolean ready27;
+	boolean ready28;
 
 	public static void main(String[] args) {
 		PApplet.main(Control.class.getName());
@@ -45,8 +54,14 @@ public class Control extends PApplet {
 	PImage P11;
 	PImage P12;
 	PImage P13;
-	// PImage P6;
-	// PImage P6;
+	PImage P14;
+	PImage P15;
+	PImage P16;
+	PImage P17;
+	PImage P18;
+	PImage P19;
+	PImage P20;
+	PImage P21;
 
 	int parallax;
 	boolean move;
@@ -123,6 +138,30 @@ public class Control extends PApplet {
 		P13 = null;
 		P13 = loadImage("./data/P13.png");
 
+		P14 = null;
+		P14 = loadImage("./data/P14.png");
+
+		P15 = null;
+		P15 = loadImage("./data/P15.png");
+
+		P16 = null;
+		P16 = loadImage("./data/P16.png");
+
+		P17 = null;
+		P17 = loadImage("./data/P17.png");
+
+		P18 = null;
+		P18 = loadImage("./data/P18.png");
+
+		P19 = null;
+		P19 = loadImage("./data/P19.png");
+
+		P20 = null;
+		P20 = loadImage("./data/P20.png");
+
+		P21 = null;
+		P21 = loadImage("./data/P21.png");
+
 		overScreen = null;
 		overScreen = loadImage("./data/overScreen.png");
 
@@ -151,6 +190,11 @@ public class Control extends PApplet {
 
 		move = false;
 	}
+	
+	public void escribirResultado() {
+		
+	}
+	
 
 	public void draw() {
 		switch (screen) {
@@ -198,7 +242,6 @@ public class Control extends PApplet {
 
 			// P2
 			image(P2, 0, 0, 1000, 1000);
-			System.out.println("se dibuja");
 			ready4 = true;
 
 			break;
@@ -343,15 +386,114 @@ public class Control extends PApplet {
 			// P12
 
 			image(P12, 0, 0, 1000, 1000);
+			ready18 = true;
 
 			break;
-			
+
 		case 19:
 
 			// P13
 
 			image(P13, 0, 0, 1000, 1000);
+			ready19 = true;
 
+			break;
+
+		case 20:
+
+			// ELEMENTO 5
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_5) {
+					inter.drawElement(ele.get(i));
+
+					break;
+				}
+			}
+
+			break;
+
+		case 21:
+
+			// P14
+
+			image(P14, 0, 0, 1000, 1000);
+
+			break;
+
+		case 22:
+
+			// P15
+
+			image(P15, 0, 0, 1000, 1000);
+			ready22 = true;
+
+			break;
+
+		case 23:
+
+			// P16
+
+			image(P16, 0, 0, 1000, 1000);
+			ready23 = true;
+
+			break;
+
+		case 24:
+
+			// P17
+
+			image(P17, 0, 0, 1000, 1000);
+			ready24 = true;
+
+			break;
+
+		case 25:
+
+			// P18
+
+			image(P18, 0, 0, 1000, 1000);
+			ready25 = true;
+
+			break;
+
+		case 26:
+
+			// P19
+
+			image(P19, 0, 0, 1000, 1000);
+			ready26 = true;
+
+			break;
+
+		case 27:
+
+			// P20
+
+			image(P20, 0, 0, 1000, 1000);
+			ready27 = true;
+
+			break;
+
+		case 28:
+
+			// P21
+
+			image(P21, 0, 0, 1000, 1000);
+			ready28 = true;
+
+			break;
+
+		case 29:
+
+			// overscreeen
+
+			image(overScreen, 0, 0, 1000, 1000);
+			compo.finalizar();
+
+			fill(255);
+			textSize(20);
+			text(mouseX + "," + mouseY, mouseX, mouseY);
 			break;
 
 		}
@@ -503,9 +645,72 @@ public class Control extends PApplet {
 		if (ready17 && screen == 17 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 18;
 		}
-		
-		if (screen == 18 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+
+		if (ready18 && screen == 18 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 19;
+		}
+
+		if (ready19 && screen == 19 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 20;
+		}
+
+		// ELEMENTO 5
+		if (screen == 20) {
+
+			Element a = null;
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_5) {
+
+					a = ele.get(i);
+
+					break;
+				}
+
+			}
+
+			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
+				screen = 21;
+			}
+
+		}
+
+		if (screen == 21 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 22;
+		}
+
+		if (ready22 && screen == 22 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 23;
+		}
+
+		if (ready23 && screen == 23 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 24;
+		}
+
+		if (ready24 && screen == 24 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 25;
+		}
+		
+		if (ready25 && screen == 25 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 26;
+		}
+		
+		if (ready26 && screen == 26 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 27;
+		}
+		
+		if (ready27 && screen == 27 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 28;
+		}
+		
+		if (ready28 && screen == 28 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 29;
+		}
+		
+		// if toco terminar que se imprima el txt con laspalabras en mayus
+		if (screen == 29 && mouseX > 420 && mouseX < 585 && mouseY > 731 && mouseY < 770) {
+			screen = 1;
+			
 		}
 	}
 
