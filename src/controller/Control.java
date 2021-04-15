@@ -1,12 +1,18 @@
 package controller;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import model.*;
 import processing.core.*;
 import view.Interface;
 
 public class Control extends PApplet {
+
+	PrintWriter escribir;
 
 	private Composition compo;
 	private Interface inter;
@@ -27,6 +33,8 @@ public class Control extends PApplet {
 	boolean ready26;
 	boolean ready27;
 	boolean ready28;
+	
+	
 
 	public static void main(String[] args) {
 		PApplet.main(Control.class.getName());
@@ -65,23 +73,30 @@ public class Control extends PApplet {
 
 	int parallax;
 	boolean move;
+	String[] cuento;
+	FileWriter writer;
 
 	ArrayList<Element> ele;
 
 	public void settings() {
 		size(1000, 1000);
-
+		cuento = loadStrings("./texto/retratoOval.txt");
 		ele = new ArrayList<Element>();
-
-		Element a1 = new Element("Cortina", "./data/elemento1.png", false, Element.TIPO_1, 707, 323, 969, 615);
+        try {
+			writer = new FileWriter("texto/nuevotexto.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Element a1 = new Element("persianas", "./data/elemento1.png", false, Element.TIPO_1, 707, 323, 969, 615);
 		ele.add(a1);
-		Element a2 = new Element("Lampara", "./data/elemento2.png", false, Element.TIPO_2, 203, 352, 312, 431);
+		Element a2 = new Element("candelabro", "./data/elemento2.png", false, Element.TIPO_2, 203, 352, 312, 431);
 		ele.add(a2);
-		Element a3 = new Element("Cama", "./data/elemento3.png", false, Element.TIPO_3, 59, 559, 315, 812);
+		Element a3 = new Element("cortinas", "./data/elemento3.png", false, Element.TIPO_3, 59, 559, 315, 812);
 		ele.add(a3);
-		Element a4 = new Element("Libro", "./data/elemento4.png", false, Element.TIPO_4, 474, 773, 535, 816);
+		Element a4 = new Element("volumen", "./data/elemento4.png", false, Element.TIPO_4, 474, 773, 535, 816);
 		ele.add(a4);
-		Element a5 = new Element("Pintura", "./data/elemento5.png", false, Element.TIPO_5, 520, 173, 605, 273);
+		Element a5 = new Element("cuadro", "./data/elemento5.png", false, Element.TIPO_5, 520, 173, 605, 273);
 		ele.add(a5);
 
 		// posX y posY area sensible elementos
@@ -190,11 +205,30 @@ public class Control extends PApplet {
 
 		move = false;
 	}
-	
+
 	public void escribirResultado() {
+        ArrayList<String> a = new ArrayList<String>();
+		escribir = new PrintWriter(writer);
+		for (int i = 0; i < ele.size(); i++) {
+			a.add(ele.get(i).getPalabra());
+		}
 		
+		for (int i =0;i<cuento.length;i++) {
+			for (int j = 0; j < a.size(); j++) {
+				if(a.get(j).equals(cuento[i])) {
+					cuento[i] = cuento[i].toUpperCase();
+				}
+			}
+		}
+		System.out.println("cuento length "+cuento.length);
+		for (int i = 0; i < cuento.length; i++) {
+			escribir.println(cuento[i]);
+			System.out.println("cuento flush");
+		}
+		
+		escribir.flush();
+		escribir.close();
 	}
-	
 
 	public void draw() {
 		switch (screen) {
@@ -210,12 +244,13 @@ public class Control extends PApplet {
 
 			// PARALLAX
 
-			// image(flecha, 0, 0, 1000, 1000);
 			image(background, -150 + (parallax), 0, 2000, 1000);
 			image(midground, -150 + (parallax * 2), 0, 2000, 1000);
 			image(foreground2, -150 + (parallax * 3), 0, 2000, 1000);
 			image(personajes, 0, 0, 2000, 1000);
 			image(foreground1, -150 + (parallax * 3), 0, 2000, 1000);
+			
+	
 
 			if (mouseX > 800) {
 
@@ -225,6 +260,7 @@ public class Control extends PApplet {
 
 				} else {
 					move = true;
+					image(flecha, 0,0,1000,1000);
 				}
 
 			}
@@ -489,12 +525,6 @@ public class Control extends PApplet {
 			// overscreeen
 
 			image(overScreen, 0, 0, 1000, 1000);
-			compo.finalizar();
-
-			fill(255);
-			textSize(20);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
-			break;
 
 		}
 	}
@@ -508,7 +538,7 @@ public class Control extends PApplet {
 		}
 
 		// temporal para pasar del parallax PARALLAX A CUENTO P1
-		if (screen == 2 && mouseX > 800 && move) {
+		if (screen == 2 && move && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 3;
 
 		}
@@ -516,8 +546,6 @@ public class Control extends PApplet {
 		// CUENTO - P1 A P2 - mouses area de la flecha
 		if (screen == 3 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 4;
-
-			System.out.println("screen 4" + screen);
 
 		}
 
@@ -690,25 +718,26 @@ public class Control extends PApplet {
 		if (ready24 && screen == 24 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 25;
 		}
-		
+
 		if (ready25 && screen == 25 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 26;
 		}
-		
+
 		if (ready26 && screen == 26 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 27;
 		}
-		
+
 		if (ready27 && screen == 27 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 28;
 		}
-		
+
 		if (ready28 && screen == 28 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 29;
 		}
-		
+
 		// if toco terminar que se imprima el txt con laspalabras en mayus
 		if (screen == 29 && mouseX > 420 && mouseX < 585 && mouseY > 731 && mouseY < 770) {
+			escribirResultado();
 			screen = 1;
 			
 		}
