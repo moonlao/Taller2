@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -74,7 +72,6 @@ public class Control extends PApplet {
 	int parallax;
 	boolean move;
 	String[] cuento;
-	FileWriter writer;
 
 	ArrayList<Element> ele;
 
@@ -82,12 +79,7 @@ public class Control extends PApplet {
 		size(1000, 1000);
 		cuento = loadStrings("./texto/retratoOval.txt");
 		ele = new ArrayList<Element>();
-        try {
-			writer = new FileWriter("texto/nuevotexto.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		Element a1 = new Element("persianas", "./data/elemento1.png", false, Element.TIPO_1, 707, 323, 969, 615);
 		ele.add(a1);
 		Element a2 = new Element("candelabro", "./data/elemento2.png", false, Element.TIPO_2, 203, 352, 312, 431);
@@ -208,7 +200,7 @@ public class Control extends PApplet {
 
 	public void escribirResultado() {
         ArrayList<String> a = new ArrayList<String>();
-		escribir = new PrintWriter(writer);
+		escribir = createWriter("./texto/textoNuevo.txt");
 		for (int i = 0; i < ele.size(); i++) {
 			a.add(ele.get(i).getPalabra());
 		}
