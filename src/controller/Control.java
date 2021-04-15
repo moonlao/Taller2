@@ -12,6 +12,9 @@ public class Control extends PApplet {
 	private Interface inter;
 	private int screen;
 
+	boolean ready4;
+	boolean ready7;
+	
 	public static void main(String[] args) {
 		PApplet.main(Control.class.getName());
 	}
@@ -27,6 +30,19 @@ public class Control extends PApplet {
 	PImage midground;
 	PImage background;
 	PImage flecha;
+	PImage P3;
+	PImage P4;
+	PImage P5;
+	PImage P6;
+	PImage P7;
+	PImage P8;
+	PImage P9;
+	PImage P10;
+	PImage P11;
+	PImage P12;
+	//PImage P6;
+	//PImage P6;
+	//PImage P6;
 
 	int parallax;
 	boolean move;
@@ -38,15 +54,15 @@ public class Control extends PApplet {
 
 		ele = new ArrayList<Element>();
 
-		Element a1 = new Element("Cortina", "./data/elemento1.png", false, Element.TIPO_1, 0, 0, 1000, 1000);
+		Element a1 = new Element("Cortina", "./data/elemento1.png", false, Element.TIPO_1, 707, 323, 969, 615);
 		ele.add(a1);
-		Element a2 = new Element("Lampara", "./data/elemento2.png", false, Element.TIPO_2, 0, 0, 0, 0);
+		Element a2 = new Element("Lampara", "./data/elemento2.png", false, Element.TIPO_2, 203, 352, 312, 431);
 		ele.add(a2);
-		Element a3 = new Element("Cama", "./data/elemento3.png", false, Element.TIPO_3, 0, 0, 0, 0);
+		Element a3 = new Element("Cama", "./data/elemento3.png", false, Element.TIPO_3, 59, 559, 315, 812);
 		ele.add(a3);
-		Element a4 = new Element("Libro", "./data/elemento4.png", false, Element.TIPO_4, 0, 0, 0, 0);
+		Element a4 = new Element("Libro", "./data/elemento4.png", false, Element.TIPO_4, 474, 773, 535, 816);
 		ele.add(a4);
-		Element a5 = new Element("Pintura", "./data/elemento5.png", false, Element.TIPO_5, 0, 0, 0, 0);
+		Element a5 = new Element("Pintura", "./data/elemento5.png", false, Element.TIPO_5, 520, 173, 605, 273);
 		ele.add(a5);
 
 		// posX y posY area sensible elementos
@@ -69,6 +85,39 @@ public class Control extends PApplet {
 
 		P1 = null;
 		P1 = loadImage("./data/P1.png");
+
+		P3 = null;
+		P3 = loadImage("./data/P3.png");
+
+		P4 = null;
+		P4 = loadImage("./data/P4.png");
+
+		P5 = null;
+		P5 = loadImage("./data/P5.png");
+
+		P6 = null;
+		P6 = loadImage("./data/P6.png");
+
+		P7 = null;
+		P7 = loadImage("./data/P7.png");
+
+		P8 = null;
+		P8 = loadImage("./data/P8.png");
+
+		P9 = null;
+		P9 = loadImage("./data/P9.png");
+
+		P10 = null;
+		P10 = loadImage("./data/P10.png");
+
+		P11 = null;
+		P11 = loadImage("./data/P11.png");
+
+		P12 = null;
+		P12 = loadImage("./data/P12.png");
+
+		//P7 = null;
+		//P7 = loadImage("./data/P7.png");
 
 		overScreen = null;
 		overScreen = loadImage("./data/overScreen.png");
@@ -107,10 +156,6 @@ public class Control extends PApplet {
 
 			image(coverScreen, 0, 0, 1000, 1000);
 
-			textSize(15);
-			fill(255);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
-
 			break;
 
 		case 2:
@@ -126,20 +171,17 @@ public class Control extends PApplet {
 
 			if (mouseX > 800) {
 
-                if (parallax >= -35) {
-                    parallax= parallax -2;
+				if (parallax >= -35) {
+					//parallax = parallax - 2;
+					parallax = parallax - 20;
 
-                }else {
-                	move = true;
-                }
+				} else {
+					move = true;
+				}
 
+			}
 
-            }
-
-			textSize(15);
-			fill(255);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
-
+			
 			break;
 
 		case 3:
@@ -147,9 +189,7 @@ public class Control extends PApplet {
 			// TEXTO P1
 			image(P1, 0, 0, 1000, 1000);
 
-			textSize(15);
-			fill(255);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
+		
 
 			break;
 
@@ -157,21 +197,14 @@ public class Control extends PApplet {
 
 			// P2
 			image(P2, 0, 0, 1000, 1000);
-
-			textSize(15);
-			fill(255);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
+			System.out.println("se dibuja");
+             ready4=true;
+		
 
 			break;
 
 		case 5:
 
-			// ELEMENTO 0
-
-			//image(elemento0, 0, 0, 1000, 1000);
-
-			
-			
 			// ELEMENTO 1
 
 			for (int i = 0; i < ele.size(); i++) {
@@ -181,23 +214,28 @@ public class Control extends PApplet {
 					break;
 				}
 			}
+
 			
-			
-			textSize(15);
-			fill(255);
-			text(mouseX + "," + mouseY, mouseX, mouseY);
 
 			break;
 
 		case 6:
 
+			// P3
+
+			image(P3, 0, 0, 1000, 1000);
+			
+		
+
 			break;
 
 		case 7:
 
-			// P3
+			// P4
 
-			image(elemento0, 0, 0, 1000, 1000);
+			image(P4, 0, 0, 1000, 1000);
+			ready7=true;
+			
 
 			break;
 
@@ -217,9 +255,11 @@ public class Control extends PApplet {
 
 		case 9:
 
-			// ELEMENTO2_2
+			// P5
 
-			image(elemento0, 0, 0, 1000, 1000);
+			image(P5, 0, 0, 1000, 1000);
+
+		
 
 			break;
 
@@ -238,6 +278,39 @@ public class Control extends PApplet {
 			break;
 
 		case 11:
+			//funciona bien
+			// P6 
+
+			image(P6, 0, 0, 1000, 1000);
+			
+			break;
+
+		case 12:
+			
+			//no aparece ********************************************************************************************
+			// P7
+
+			image(P7, 0, 0, 1000, 1000);
+
+			break;
+
+		case 13:
+
+			// P8
+
+			image(P8, 0, 0, 1000, 1000);
+
+			break;
+
+		case 14:
+
+			// P9
+
+			image(P9, 0, 0, 1000, 1000);
+
+			break;
+
+		case 15:
 
 			// ELEMENTO 4
 
@@ -251,32 +324,34 @@ public class Control extends PApplet {
 
 			break;
 
-		case 12:
+		case 16:
 
-			// ELEMENTO 5
+			// P10
 
-			for (int i = 0; i < ele.size(); i++) {
-				if (ele.get(i).getTipo() == Element.TIPO_5) {
-					inter.drawElement(ele.get(i));
-
-					break;
-				}
-			}
+			image(P10, 0, 0, 1000, 1000);
 
 			break;
 
-		case 13:
+		case 17:
 
-			// FINAL SCREEN
+			// P11
 
-			image(overScreen, 0, 0, 1000, 1000);
+			image(P11, 0, 0, 1000, 1000);
 
+			break;
+
+		case 18:
+
+			// P12
+
+			image(P12, 0, 0, 1000, 1000);
+			
 			break;
 
 		}
 	}
 
-	public void mousePressed() {
+	public void mouseClicked() {
 
 		// DE COVER A PARALLAX
 		if (screen == 1 && mouseX > 420 && mouseX < 585 && mouseY > 731 && mouseY < 770) {
@@ -290,15 +365,137 @@ public class Control extends PApplet {
 
 		}
 
-
 		// CUENTO - P1 A P2 - mouses area de la flecha
 		if (screen == 3 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 4;
+			
+			System.out.println("screen 4"+ screen);
+			
 		}
 
 		// CUENTO - P2 a ELEMENTO1 - mouses area de la flecha
-		if (screen == 4 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+		if (ready4 &&screen == 4 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
 			screen = 5;
+		}
+
+		// ELEMENTO 1 A P3
+		if (screen == 5) {
+
+			Element a = null;
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_1) {
+
+					a = ele.get(i);
+
+					break;
+				}
+
+			}
+
+			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
+				screen = 6;
+			}
+
+		}
+
+		if (screen == 6 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 7;
+		}
+
+		if (ready7 && screen == 7 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 8;
+		}
+
+		// ELEMENTO 2
+		if (screen == 8) {
+
+			Element a = null;
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_2) {
+
+					a = ele.get(i);
+
+					break;
+				}
+
+			}
+
+			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
+				screen = 9;
+			}
+
+		}
+
+		if (screen == 9 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 10;
+		}
+
+		// ELEMENTO 3
+		if (screen == 10) {
+
+			Element a = null;
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_3) {
+
+					a = ele.get(i);
+
+					break;
+				}
+
+			}
+
+			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
+				screen = 11;
+			}
+
+		}
+
+		if (screen == 11 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 12;
+		}
+
+		if (screen == 12 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 13;
+		}
+
+		if (screen == 13 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 14;
+		}
+
+		if (screen == 14 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+			screen = 15;
+		}
+
+		// ELEMENTO 4
+		if (screen == 15) {
+
+			Element a = null;
+
+			for (int i = 0; i < ele.size(); i++) {
+				if (ele.get(i).getTipo() == Element.TIPO_4) {
+
+					a = ele.get(i);
+
+					break;
+				}
+
+			}
+
+			if (mouseX >= a.getPosX() && mouseX <= a.getPosX2() && mouseY >= a.getPosY() && mouseY <= a.getPosY2()) {
+				screen = 16;
+			}
+			
+			if (screen == 16 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+				screen = 17;
+			}
+			
+			if (screen == 17 && mouseX > 800 && mouseX < 941 && mouseY > 61 && mouseY < 183) {
+				screen = 18;
+			}
+
 		}
 	}
 
