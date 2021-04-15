@@ -259,8 +259,8 @@ public class Control extends PApplet {
 			if (mouseX > 800) {
 
 				if (parallax >= -35) {
-					// parallax = parallax - 2;
-					parallax = parallax - 20;
+				 parallax = parallax - 2;
+					//parallax = parallax - 20;
 
 				} else {
 					move = true;
