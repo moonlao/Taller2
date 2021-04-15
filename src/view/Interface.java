@@ -17,7 +17,7 @@ public class Interface {
 		app.background(0);
 		PImage elementos = null;
 		elementos = app.loadImage(element.getUrl());
-		app.image(elementos, 0, 0);
+		app.image(elementos, 0, 0, 1000, 1000);
 	}
 	
 }
