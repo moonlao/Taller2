@@ -72,12 +72,21 @@ public class Control extends PApplet {
 	int parallax;
 	boolean move;
 	String[] cuento;
+	ArrayList<String> paso ;
 
 	ArrayList<Element> ele;
 
 	public void settings() {
 		size(1000, 1000);
 		cuento = loadStrings("./texto/retratoOval.txt");
+		paso = new ArrayList<String>();
+		for (int i = 0; i < cuento.length; i++) {
+			String[] z= cuento[i].split(" ");
+			for (int j = 0; j < z.length; j++) {
+				paso.add(z[j]);
+			}
+		}
+		
 		ele = new ArrayList<Element>();
 
 		Element a1 = new Element("persianas", "./data/elemento1.png", false, Element.TIPO_1, 707, 323, 969, 615);
@@ -200,21 +209,24 @@ public class Control extends PApplet {
 
 	public void escribirResultado() {
         ArrayList<String> a = new ArrayList<String>();
+        ArrayList<String> finala = new ArrayList<String>();
 		escribir = createWriter("./texto/textoNuevo.txt");
 		for (int i = 0; i < ele.size(); i++) {
 			a.add(ele.get(i).getPalabra());
 		}
 		
-		for (int i =0;i<cuento.length;i++) {
+		for (int i =0;i<paso.size();i++) {
 			for (int j = 0; j < a.size(); j++) {
-				if(a.get(j).equals(cuento[i])) {
-					cuento[i] = cuento[i].toUpperCase();
+				if(a.get(j).equalsIgnoreCase(paso.get(i))) {
+					finala.add(paso.get(i).toUpperCase());
+				}else {
+					finala.add(paso.get(i));
 				}
 			}
 		}
-		System.out.println("cuento length "+cuento.length);
-		for (int i = 0; i < cuento.length; i++) {
-			escribir.println(cuento[i]);
+		System.out.println("cuento length "+paso.size());
+		for (int i = 0; i < paso.size(); i++) {
+			escribir.println(paso.get(i));
 			System.out.println("cuento flush");
 		}
 		
